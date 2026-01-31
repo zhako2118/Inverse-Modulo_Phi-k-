@@ -37,3 +37,45 @@ print (f'x = {x}, y = {y}')
 
 # Step 3: x is the a^-1 of a (or inverse modulo)
 print (f'Hence, the inverse modulo a^-1 = {x}')
+
+
+# Ask for the phi of k, where k is any positive integer
+print('Do you want me to compute φ(k)? Please answer yes/no')
+y_n = input('yes/no: ').strip().lower()
+
+# General Prime Factorization
+def prime_factorization(n):
+    factors = {}
+    d = 2
+    while d * d <= n:
+        while n % d == 0:
+            factors[d] = factors.get(d, 0) + 1
+            n //= d
+        d += 1
+    if n > 1:
+        factors[n] = 1
+    return factors
+
+
+# General Euler Function
+def phi(n):
+    factors = prime_factorization(n)
+    result = 1
+
+    print(f"Prime factorization: {factors}")
+
+    for p, e in factors.items():
+        term = p**e - p**(e-1)
+        print(f"φ({p}^{e}) = {p**e} - {p**(e-1)} = {term}")
+        result *= term
+
+    return result
+
+
+# Do you want to run this program
+if y_n == "yes":
+    k = int(input("Enter k: "))
+    phiofk = phi(k)
+    print(f"φ({k}) = {phiofk}")
+else:
+    print("Program ended.")
