@@ -82,3 +82,7 @@ if y_n == "yes":
     print(f"φ({k}) = {phiofk}")
 else:
     print("Program ended.")
+
+
+# Euler's Theorem
+# if gcd (a,m) = 1, then a ^φ(m) ≡ 1 mod m
